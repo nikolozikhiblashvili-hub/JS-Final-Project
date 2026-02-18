@@ -1,0 +1,80 @@
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+   padding: 10px;
+}
+header{
+ background: url(./header.png);
+ background-size: 100% 700px;
+   
+    background-repeat: no-repeat;
+    padding: 10px 20px;
+    background-color: #333;
+    color: white;
+  
+    height: 400px;
+}
+
+.header-content{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+   position: fixed;
+   top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+ 
+    
+}
+.home-cart{
+    display: flex;
+    gap: 100px;
+}
+a{
+    color: white;
+    text-decoration: none;
+    font-size: 1.2em;
+}
+#data-container{
+    
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+#card{
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    width: 250px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+.card-image{
+
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+    
+}
+h2{
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+.nuts-vegeterian{
+    display: flex;
+    gap: 10px;
+}
+.pricebtn{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-top: 10px;
+}
