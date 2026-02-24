@@ -10,10 +10,11 @@
     <header>
         
         <div class="header-content">
-            <h1>Food Menu</h1>
+            <h1>KHIBLA RESTAURANT</h1>
             <div class="home-cart">
                 <a href="#" class="home-link">Home</a>
-                <a href="#" class="cart-link">Cart</a>
+                <a href="gemini.html">Gemini</a>
+                <a href="basket.html" class="cart-link">Cart</a>
             </div>
         </div>
       
@@ -23,16 +24,29 @@
 
     <h1>Categories</h1>
     <div class="categoriesbtns">
-        <button id="All">All</button>
-        <button id="Salads">Salads</button>
-        <button id="Soups">Soups</button>
-        <button id="chickenDishes">Chicken Dishes</button>
-        <button id="beefDishes">Beef Dishes</button>
-        <button id="SeafoodDishes">Seafood Dishes</button>
-        <button id="VegetableDishes">Vegetable Dishes</button>
-        <button id="BitsBites">Bits&Bites</button>
-        <button id="OnTheSide">On The Side</button>
+        <button onclick="GetAllProducts()" id="All">All</button>
+        <button onclick="filtered(1)" id="Salads">Salads</button>
+        <button onclick="filtered(2)" id="Soups">Soups</button>
+        <button onclick="filtered(3)" id="chickenDishes">Chicken Dishes</button>
+        <button onclick="filtered(4)" id="beefDishes">Beef Dishes</button>
+        <button onclick="filtered(5)" id="SeafoodDishes">Seafood Dishes</button>
+        <button onclick="filtered(6)" id="VegetableDishes">Vegetable Dishes</button>
+        <button onclick="filtered(7)" id="BitsBites">Bits&Bites</button>
+        <button onclick="filtered(8)" id="OnTheSide">On The Side</button>
     </div>
+    <aside>
+        <h2>Filter </h2>
+        <div class="price-filter">
+          
+        </div>
+        <p  class="select-vegetarian"><span class="vegspn">vegetarian</span></p>
+        <p  class="select-nuts"><span class="nutspn">nuts</span></p>
+        <div class="apply-reset">
+         <button class="apply-filter">Apply</button>
+         <button class="reset-filter">Reset</button>
+        </div>
+       
+    </aside>
     <div id="data-container"></div>
     <script src="app.js"></script>
 </body>
