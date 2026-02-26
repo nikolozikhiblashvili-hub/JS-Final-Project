@@ -1,0 +1,90 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+  margin: 0;
+  padding: 10px;
+}
+header {
+  background: url(./header.png);
+  background-size: 100% 700px;
+
+  background-repeat: no-repeat;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+
+  height: 400px;
+}
+
+.header-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+.home-cart {
+  display: flex;
+  gap: 100px;
+}
+a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2em;
+}
+h1 {
+  text-align: center;
+  margin: 20px 0;
+}
+.basketctn {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 20px;
+  width: 100%;
+  margin: 0 auto;
+}
+.basket-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  padding: 20px;
+  width: 60%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.card-image {
+  width: 200px;
+  height: 200px;
+  
+  border-radius: 5px;
+}
+.product-info {
+  display: flex;
+  justify-content: center;
+align-items: center;
+}
+.total-price {
+    display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.quantity-info {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.decrease, .increase {
+  width: 30px;
+  height: 30px;
+  border: none;
+  border-radius: 50%;
+  font-size: x-large;
+}

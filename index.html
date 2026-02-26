@@ -1,53 +1,67 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
     <header>
-        
-        <div class="header-content">
-            <h1>KHIBLA RESTAURANT</h1>
-            <div class="home-cart">
-                <a href="#" class="home-link">Home</a>
-                <a href="gemini.html">Gemini</a>
-                <a href="basket.html" class="cart-link">Cart</a>
-            </div>
+      <div class="header-content">
+        <h1>KHIBLA RESTAURANT</h1>
+        <div class="home-cart">
+          <a href="#" class="home-link">Home</a>
+          <a href="gemini.html">Gemini</a>
+          <a href="basket.html" class="cart-link">Cart</a>
         </div>
-      
-
-
+      </div>
     </header>
 
     <h1>Categories</h1>
     <div class="categoriesbtns">
-        <button onclick="GetAllProducts()" id="All">All</button>
-        <button onclick="filtered(1)" id="Salads">Salads</button>
-        <button onclick="filtered(2)" id="Soups">Soups</button>
-        <button onclick="filtered(3)" id="chickenDishes">Chicken Dishes</button>
-        <button onclick="filtered(4)" id="beefDishes">Beef Dishes</button>
-        <button onclick="filtered(5)" id="SeafoodDishes">Seafood Dishes</button>
-        <button onclick="filtered(6)" id="VegetableDishes">Vegetable Dishes</button>
-        <button onclick="filtered(7)" id="BitsBites">Bits&Bites</button>
-        <button onclick="filtered(8)" id="OnTheSide">On The Side</button>
+      <button onclick="GetAllProducts()" class="allbtn" id="All">All</button>
+      <button onclick="filtered(1)" class="allbtn" id="Salads">Salads</button>
+      <button onclick="filtered(2)" class="allbtn" id="Soups">Soups</button>
+      <button onclick="filtered(3)" class="allbtn" id="chickenDishes">
+        Chicken Dishes
+      </button>
+      <button onclick="filtered(4)" class="allbtn" id="beefDishes">
+        Beef Dishes
+      </button>
+      <button onclick="filtered(5)" class="allbtn" id="SeafoodDishes">
+        Seafood Dishes
+      </button>
+      <button onclick="filtered(6)" class="allbtn" id="VegetableDishes">
+        Vegetable Dishes
+      </button>
+      <button onclick="filtered(7)" class="allbtn" id="BitsBites">
+        Bits&Bites
+      </button>
+      <button onclick="filtered(8)" class="allbtn" id="OnTheSide">
+        On The Side
+      </button>
     </div>
-    <aside>
-        <h2>Filter </h2>
-        <div class="price-filter">
-          
+    
+    <div class="main-container">
+        <aside>
+      <div class="aside">
+        <h2>Filter</h2>
+        <div class="filter-box">
+          <label> Spiciness: <span id="spiceValue">0</span> </label>
+          <input type="range" id="spiceRange" min="0" max="4" value="0" />
         </div>
-        <p  class="select-vegetarian"><span class="vegspn">vegetarian</span></p>
-        <p  class="select-nuts"><span class="nutspn">nuts</span></p>
+        <p class="select-vegetarian"><span class="vegspn">vegetarian</span></p>
+        <p class="select-nuts"><span class="nutspn">nuts</span></p>
         <div class="apply-reset">
-         <button class="apply-filter">Apply</button>
-         <button class="reset-filter">Reset</button>
+          <button class="apply-filter">Apply</button>
+          <button class="reset-filter">Reset</button>
         </div>
-       
+      </div>
     </aside>
-    <div id="data-container"></div>
+      <div id="data-container"></div>
+    </div>
+
     <script src="app.js"></script>
-</body>
+  </body>
 </html>
