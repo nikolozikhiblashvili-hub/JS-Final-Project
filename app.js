@@ -51,29 +51,68 @@ function renderProducts(data) {
   });
   addToCart();
 }
-function addToCart() {
+// function addToCart() {
+//     const allbtns = document.querySelectorAll(".add-to-cart");
+//     allbtns.forEach(btn => {
+//         btn.addEventListener("click", async () => {
+//         const productId= btn.dataset.productId;
+//         await fetch(`https://restaurant.stepprojects.ge/api/Baskets/AddToBasket/`, {
+//             method: "POST",
+//             headers: {
+//                 "Content-Type": "application/json",
+//                 "Content-Type":"application/json"
+//                 },
+//                 body:JSON.stringify({
+//                     productId: Number(productId),
+//                     quantity:1,
+//                     price:0   
+//                 })
+//             });
+//             alert("პროდუქტი დაემატა კალათაში");
+            
+//         });
+
+//     });
+    
+// }
+async function addToCart() {
     const allbtns = document.querySelectorAll(".add-to-cart");
+
     allbtns.forEach(btn => {
         btn.addEventListener("click", async () => {
-        const productId= btn.dataset.productId;
-        await fetch(`https://restaurant.stepprojects.ge/api/Baskets/AddToBasket/`, {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-                "Content-Type":"application/json"
+
+            const productId = btn.dataset.productId;
+            const response = await fetch("https://restaurant.stepprojects.ge/api/Baskets/GetAll");
+            const basket = await response.json();
+
+           
+            const exists = basket.some(item => item.product.id === Number(productId));
+
+            if (exists) {
+                alert("ეს პროდუქტი უკვე დამატებულია კალათაში");
+                return; 
+            }
+
+            
+            await fetch(`https://restaurant.stepprojects.ge/api/Baskets/AddToBasket`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
                 },
-                body:JSON.stringify({
+                body: JSON.stringify({
                     productId: Number(productId),
-                    quantity:1,
-                    price:0   
+                    quantity: 1,
+                    price: 0
                 })
             });
-            alert("პროდუქტი დაემატა კალათაში");
-            
-        });
 
+            alert("პროდუქტი დაემატა კალათაში");
+
+            // სურვილის შემთხვევაში ღილაკის გათიშვა
+            btn.disabled = true;
+            btn.textContent = "Added";
+        });
     });
-    
 }
 const vegetarianBtn = document.querySelector(".select-vegetarian");
 const nutsBtn = document.querySelector(".select-nuts");

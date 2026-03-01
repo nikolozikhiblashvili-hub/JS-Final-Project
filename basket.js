@@ -15,7 +15,7 @@ function renderBasket(data){
         basket.classList.add("basket-card");
         basket.innerHTML=`
         <div class="product-info">
-        <button class="remove-from-cart" data-product-id="${element.product.id}">Remove</button>
+        <button class="remove-from-cart" data-product-id="${element.product.id}">❌</button>
         <img class="card-image" src="${element.product.image}" alt="${element.product.name}">
         <h2>${element.product.name}</h2>
         </div>
@@ -26,19 +26,54 @@ function renderBasket(data){
         <p class="quantity-display">${element.quantity}</p>
         <button class=" increase" data-product-id="${element.product.id}">+</button>
         </div>
-        <p>Price: $${element.price}</p>
-        <p>Total: $${element.price * element.quantity}</p>
+        <p>Price: $${element.product.price }</p>
+        <p>Total: $${element.product.price * element.quantity}</p>
+        
         </div>
         `;
         basketContainer.appendChild(basket);
         
     });
 removeFromCart();
+calculateTotalPrice(data);
 }
 
 
 
-
+async function UpdateQuantity(productId, newQuantity) {
+    const response = await fetch(`https://restaurant.stepprojects.ge/api/Baskets/UpdateBasket/`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            productId: productId,
+            quantity: newQuantity
+        })
+    });
+    if (response.ok) {
+        GetBasket(); // Refresh the basket after updating quantity
+    } else {
+        console.error("Failed to update quantity");
+    }
+}
+basketContainer.addEventListener("click", (event) => {
+    if (event.target.classList.contains("increase")) {
+        const productId = event.target.dataset.productId;
+        const quantityDisplay = event.target.parentElement.querySelector(".quantity-display");
+        const currentQuantity = parseInt(quantityDisplay.textContent);
+        UpdateQuantity(productId, currentQuantity + 1);
+    } else if (event.target.classList.contains("decrease")) {
+        const productId = event.target.dataset.productId;
+        const quantityDisplay = event.target.parentElement.querySelector(".quantity-display");
+        const currentQuantity = parseInt(quantityDisplay.textContent);
+        if (currentQuantity > 1) {
+            UpdateQuantity(productId, currentQuantity - 1);
+        } else {
+            Remove(productId); // Remove item if quantity goes below 1
+        }
+    }
+});
 
 async function Remove(productId) {
     const response = await fetch(`https://restaurant.stepprojects.ge/api/Baskets/DeleteProduct/${productId}`, {
@@ -61,5 +96,12 @@ removeButtons.forEach(button => {
         Remove(productId);
     });
 });
+}
+const totalPriceElement = document.getElementById("total-price");
+function calculateTotalPrice(data) {
+    const totalPrice = data.reduce((total, item) => {
+        return total + (item.product.price * item.quantity);
+    }, 0);
+    totalPriceElement.textContent = `Total Price: $${totalPrice}`;
 }
 
