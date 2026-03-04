@@ -14,7 +14,7 @@ header {
   background-color: #333;
   color: white;
 
-  height: 250px;
+  height: 400px;
 }
 
 .header-content {
@@ -264,7 +264,9 @@ aside{
 }
 
 @media (max-width: 768px) {
-
+  header {
+    height: 250px;
+  }
   .header-content {
     flex-direction: column;
     gap: 10px;
