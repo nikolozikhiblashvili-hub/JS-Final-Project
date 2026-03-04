@@ -1,4 +1,8 @@
 const div = document.getElementById("data-container");
+
+if (div) {
+    GetAllProducts();
+}
 async function GetAllProducts() {
   const response = await fetch(
     "https://restaurant.stepprojects.ge/api/Products/GetAll",
@@ -108,7 +112,7 @@ async function addToCart() {
 
             alert("პროდუქტი დაემატა კალათაში");
 
-            // სურვილის შემთხვევაში ღილაკის გათიშვა
+          
             btn.disabled = true;
             btn.textContent = "Added";
         });
@@ -166,7 +170,24 @@ const spice = range.addEventListener("input", function() {
   value.textContent = this.value;
   
 });
-GetAllProducts();
+window.addEventListener("scroll", () => {
+    const header = document.querySelector(".header-content");
+
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+const burger = document.getElementById("burger");
+const menu = document.querySelector(".home-cart");
+
+burger.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  burger.classList.toggle("active");
+});
+
+
 
 
 

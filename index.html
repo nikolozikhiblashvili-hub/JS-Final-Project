@@ -10,11 +10,29 @@
     <header>
       <div class="header-content">
         <h1>KHIBLA RESTAURANT</h1>
+        <div class="burger" id="burger">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
         <div class="home-cart">
+         
           <a href="#" class="home-link">Home</a>
-          <a href="gemini.html">Gemini</a>
-          <a href="login.html">Login/register</a>
+          <a href="gemini.html">Help</a>
           <a href="basket.html" class="cart-link">Cart</a>
+          <div class="user-info">
+            <div id="userDisplayArea" class="hidden">
+              <div class="user-welcome">
+                Welcome, <strong id="userDisplayName"></strong>
+              </div>
+            </div>
+            <div id="notLoggedInArea">
+              <a href="login.html">Login/register</a>
+            </div>
+            <button id="logoutBtn" class="logout-btn hidden" onclick="logout()">
+              Logout
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -43,26 +61,29 @@
         On The Side
       </button>
     </div>
-    
+
     <div class="main-container">
-        <aside>
-      <div class="aside">
-        <h2>Filter</h2>
-        <div class="filter-box">
-          <label> Spiciness: <span id="spiceValue">0</span> </label>
-          <input type="range" id="spiceRange" min="0" max="4" value="0" />
+      <aside>
+        <div class="aside">
+          <h2>Filter</h2>
+          <div class="filter-box">
+            <label> Spiciness: <span id="spiceValue">0</span> </label>
+            <input type="range" id="spiceRange" min="0" max="4" value="0" />
+          </div>
+          <p class="select-vegetarian">
+            <span class="vegspn">vegetarian</span>
+          </p>
+          <p class="select-nuts"><span class="nutspn">nuts</span></p>
+          <div class="apply-reset">
+            <button class="apply-filter">Apply</button>
+            <button class="reset-filter">Reset</button>
+          </div>
         </div>
-        <p class="select-vegetarian"><span class="vegspn">vegetarian</span></p>
-        <p class="select-nuts"><span class="nutspn">nuts</span></p>
-        <div class="apply-reset">
-          <button class="apply-filter">Apply</button>
-          <button class="reset-filter">Reset</button>
-        </div>
-      </div>
-    </aside>
+      </aside>
       <div id="data-container"></div>
     </div>
 
+    <script src="login.js"></script>
     <script src="app.js"></script>
   </body>
 </html>

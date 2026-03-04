@@ -7,7 +7,7 @@ body {
 }
 header {
   background: url(./header.png);
-  background-size: 100% 700px;
+  background-size: 100% 500px;
 
   background-repeat: no-repeat;
   padding: 10px 20px;
@@ -27,14 +27,19 @@ header {
   width: 100%;
   z-index: 1000;
 }
+.header-content.scrolled {
+  background-color: #333;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
 .home-cart {
   display: flex;
   gap: 100px;
 }
 a {
-  color: white;
+   color: white;
   text-decoration: none;
-  font-size: 1.2em;
+  font-size: 1.3em;
+  font-weight: bold;
 }
 h1 {
   text-align: center;
@@ -71,10 +76,27 @@ h1 {
   justify-content: center;
 align-items: center;
 }
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
 .total-price {
     display: flex;
   justify-content: center;
   gap: 20px;
+
+}
+.alltotalprice{
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  background-color: #f3f3f3;
+  border-radius: 10px;
 }
 .quantity-info {
   display: flex;
@@ -94,4 +116,80 @@ align-items: center;
   border: none;
   font-size: 20px;
   cursor: pointer;
+}
+.burger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.burger span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: 0.3s;
+}
+@media (max-width: 768px) {
+
+  header {
+    height: 250px;
+  }
+
+  .header-content {
+    flex-direction: column;
+    gap: 10px;
+    padding: 15px;
+    text-align: center;
+  }
+
+  .home-cart {
+     position: absolute;
+    top: 70px;
+    right: 0;
+    background-color: #333;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    gap: 20px;
+
+    display: none;
+  }
+  .home-cart.active{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+
+
+  .basket-card {
+    flex-direction: column;
+    width: 95%;
+    text-align: center;
+    gap: 15px;
+  }
+
+  .card-image {
+    width: 150px;
+    height: 150px;
+  }
+
+  .product-info {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .quantity-info {
+    justify-content: center;
+  }
+  .burger {
+      display: flex;
+    position: fixed;   
+    top: 20px;         
+    right: 20px;       
+    z-index: 2000; 
+  }
 }

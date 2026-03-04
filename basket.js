@@ -1,12 +1,16 @@
 
 const basketContainer = document.getElementById("basket-container");
+
+if (basketContainer) {
+    GetBasket();
+}
 async function GetBasket() {
     const response = await fetch(`https://restaurant.stepprojects.ge/api/Baskets/GetAll`);
     const data = await response.json();
     console.log(data);
     renderBasket(data);
 }
-GetBasket();
+
 
 function renderBasket(data){
     basketContainer.innerHTML="";
@@ -57,22 +61,49 @@ async function UpdateQuantity(productId, newQuantity) {
         console.error("Failed to update quantity");
     }
 }
+// basketContainer.addEventListener("click", (event) => {
+//     if (event.target.classList.contains("increase")) {
+//         const productId = event.target.dataset.productId;
+//         const quantityDisplay = event.target.parentElement.querySelector(".quantity-display");
+//         const currentQuantity = parseInt(quantityDisplay.textContent);
+//         UpdateQuantity(productId, currentQuantity + 1);
+//     } else if (event.target.classList.contains("decrease")) {
+//         const productId = event.target.dataset.productId;
+//         const quantityDisplay = event.target.parentElement.querySelector(".quantity-display");
+//         const currentQuantity = parseInt(quantityDisplay.textContent);
+//         if (currentQuantity > 1) {
+//             UpdateQuantity(productId, currentQuantity - 1);
+//         } else {
+//             Remove(productId); 
+//         }
+//     }
+// });
 basketContainer.addEventListener("click", (event) => {
+
     if (event.target.classList.contains("increase")) {
         const productId = event.target.dataset.productId;
         const quantityDisplay = event.target.parentElement.querySelector(".quantity-display");
         const currentQuantity = parseInt(quantityDisplay.textContent);
         UpdateQuantity(productId, currentQuantity + 1);
-    } else if (event.target.classList.contains("decrease")) {
+    }
+
+    else if (event.target.classList.contains("decrease")) {
         const productId = event.target.dataset.productId;
         const quantityDisplay = event.target.parentElement.querySelector(".quantity-display");
         const currentQuantity = parseInt(quantityDisplay.textContent);
+
         if (currentQuantity > 1) {
             UpdateQuantity(productId, currentQuantity - 1);
         } else {
-            Remove(productId); // Remove item if quantity goes below 1
+            Remove(productId);
         }
     }
+
+    else if (event.target.classList.contains("remove-from-cart")) {
+        const productId = event.target.dataset.productId;
+        Remove(productId);
+    }
+
 });
 
 async function Remove(productId) {
@@ -83,7 +114,7 @@ async function Remove(productId) {
         }
     });
     if (response.ok) {
-        GetBasket(); // Refresh the basket after removal
+        GetBasket(); 
     } else {
         console.error("Failed to remove item from basket");
     }
@@ -105,3 +136,18 @@ function calculateTotalPrice(data) {
     totalPriceElement.textContent = `Total Price: $${totalPrice}`;
 }
 
+window.addEventListener("scroll", () => {
+    const header = document.querySelector(".header-content");
+
+    if (window.scrollY > 50) {
+        header.classList.add("scrolled");
+    } else {
+        header.classList.remove("scrolled");
+    }
+});
+const burger = document.getElementById("burger");
+const menu = document.querySelector(".home-cart");
+burger.addEventListener("click", () => {
+  menu.classList.toggle("active");
+  burger.classList.toggle("active");
+});

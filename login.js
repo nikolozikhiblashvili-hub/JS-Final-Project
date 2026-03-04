@@ -6,6 +6,11 @@ const API_BASE_URL = "https://rentcar.stepprojects.ge/api/Users";
       document.addEventListener("DOMContentLoaded", () => {
         checkAuthStatus();
       });
+
+      // helper to know whether we are on the login/register page
+      function isLoginPage() {
+        return document.getElementById("registerForm") !== null;
+      }
  
       // Check if user is already logged in
       function checkAuthStatus() {
@@ -14,9 +19,14 @@ const API_BASE_URL = "https://rentcar.stepprojects.ge/api/Users";
  
         if (token && user) {
           showUserInHeader(JSON.parse(user));
-          showAuthenticatedState();
+          document.getElementById("logoutBtn").classList.remove("hidden");
+          if (isLoginPage()) {
+            showAuthenticatedState();
+          }
         } else {
-          showUnauthenticatedState();
+          if (isLoginPage()) {
+            showUnauthenticatedState();
+          }
         }
       }
  
@@ -167,8 +177,9 @@ const API_BASE_URL = "https://rentcar.stepprojects.ge/api/Users";
         clearForms();
       }
  
-      // Show authenticated state
+      // Show authenticated state (only on the login/register page)
       function showAuthenticatedState() {
+        if (!isLoginPage()) return;
         document.getElementById("registerForm").classList.add("hidden");
         document.getElementById("loginForm").classList.add("hidden");
         document.getElementById("logoutBtn").classList.remove("hidden");
@@ -187,8 +198,9 @@ const API_BASE_URL = "https://rentcar.stepprojects.ge/api/Users";
         container.appendChild(welcomeDiv);
       }
  
-      // Show unauthenticated state
+      // Show unauthenticated state (only on the login/register page)
       function showUnauthenticatedState() {
+        if (!isLoginPage()) return;
         document.getElementById("registerForm").classList.remove("hidden");
         document.getElementById("loginForm").classList.add("hidden");
         document.getElementById("logoutBtn").classList.add("hidden");
