@@ -299,6 +299,8 @@ aside{
 
   .categoriesbtns {
     gap: 10px;
+    position: relative;
+    right: 20px;
   }
 
   .categoriesbtns button {
